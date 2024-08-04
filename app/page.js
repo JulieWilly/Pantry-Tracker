@@ -1,9 +1,10 @@
 'use client'
 import { database } from "@/firebase";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Box, Button, Modal, Stack, TextField, Typography, style } from "@mui/material";
 import { collection, deleteDoc, getDoc, getDocs, query, setDoc, doc } from "firebase/firestore";
+import  { Camera } from 'react-camera-pro'
 
 export default function Home() {
 
@@ -11,6 +12,10 @@ export default function Home() {
   const [inventory, setInventory] = useState([])
   const [open, setOpen] = useState(false)
   const [itemName, setItemName] = useState('')
+
+  // camera
+  const camera = useRef(null)
+  const [camImage, setCamImage] = useState(null)
 
   // modal controlls
   const handleOpen = () => setOpen(true)
@@ -59,11 +64,18 @@ export default function Home() {
     }
     await updateInventory()
   }
+
+//   const takePhoto = () => {
+// const img = camera.current;
+// console.log('img',img) 
+setCamImage(img)
+  }
   useEffect(() => {
 updateInventory()
   },[])
   
   return (
+  <>
   <Box 
   width={'100vw'}
   height={'100vh'}
@@ -156,5 +168,13 @@ updateInventory()
     
 
   </Box>
+  <div>
+      <Camera ref={camera}/>
+     <button onClick={() => {takePhoto()}}>Take photo</button>
+      <div>
+      <img src={camImage} alt='Taken photo'/>
+      </div>
+    </div>
+    </>
   );
 }
