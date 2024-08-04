@@ -2,19 +2,21 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {getFirestore} from 'firebase/firestore'
+import { config } from "dotenv";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+config()
 const firebaseConfig = {
-  apiKey: "AIzaSyDVj7C8_XyyVQDr1puk3zFvWMvwmVyk-M4",
-  authDomain: "inventory-management-app-11796.firebaseapp.com",
-  projectId: "inventory-management-app-11796",
-  storageBucket: "inventory-management-app-11796.appspot.com",
-  messagingSenderId: "833986202715",
-  appId: "1:833986202715:web:87dff3ed9742b86c16837e",
-  measurementId: "G-EJGDMSDVWM",
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MSG_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
