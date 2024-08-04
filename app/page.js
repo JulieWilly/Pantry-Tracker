@@ -68,8 +68,8 @@ export default function Home() {
 //   const takePhoto = () => {
 // const img = camera.current;
 // console.log('img',img) 
-setCamImage(img)
-  }
+// setCamImage(img)
+//   }
   useEffect(() => {
 updateInventory()
   },[])
@@ -168,13 +168,13 @@ updateInventory()
     
 
   </Box>
-  <div>
+  {/* <div>
       <Camera ref={camera}/>
      <button onClick={() => {takePhoto()}}>Take photo</button>
       <div>
       <img src={camImage} alt='Taken photo'/>
       </div>
-    </div>
+    </div> */}
     </>
   );
 }
